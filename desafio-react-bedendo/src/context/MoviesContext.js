@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Context = React.createContext({});
+const Context = React.createContext({}); 
 
 export function MoviesContextProvider({children}) {
     const [movies, setMovies] = useState([]);

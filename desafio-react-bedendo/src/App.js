@@ -2,6 +2,8 @@ import './index.css';
 import { Routes, Route, Link } from "react-router-dom";
 import Home from './pages/Home';
 import { MoviesContextProvider } from './context/MoviesContext';
+import FooterBrand from './components/Footer/FooterBrand';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
@@ -35,9 +37,10 @@ function App() {
         </MoviesContextProvider>
 
       {/* // SCROLL TO TOP */}
-
+      <ScrollToTop hidden showBelow={150}/>
       </section>
       {/* //! FOOTER-BRAND */}
+      <FooterBrand />
   </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Context, { MoviesContextProvider } from "../context/MoviesContext";
+import Context, { MoviesContextProvider } from "../context/MoviesContext"; // eslint-disable-line
 
 export default function useMovies() {
     // const { movies } = useContext()
