@@ -4,14 +4,16 @@ import Home from './pages/Home';
 import { MoviesContextProvider } from './context/MoviesContext';
 import FooterBrand from './components/Footer/FooterBrand';
 import NavBar from './components/NavBar/NavBar';
+import SearchBar from './components/SearchArea/SearchBar';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
     <div>
-      <NavBar />
       <section>
         <MoviesContextProvider>
+          <NavBar />
+          <SearchBar />
           <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="details" element={<Details />} /> */}

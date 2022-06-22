@@ -1,12 +1,16 @@
 .App {
   background-color: #343434;
-  min-height: 120vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #61dafbd2;
   text-align: center;
+}
+
+.App-SearchBar {
+  background-color: #343434;
 }
 
 .logo-ticket {
