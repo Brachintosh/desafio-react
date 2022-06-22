@@ -63,7 +63,7 @@ function App() {
           <blockquote >
             {renderMovies()}
           </blockquote>
-          <div class="divider"></div>
+          <div style={{marginBottom:'30px'}} class="divider"></div>
 
           <Routes>
             <Route path="/" element={<Home />} />
