@@ -53,6 +53,7 @@ function App() {
 
   return (
     <div>
+      
       <section>
         <MoviesContextProvider>
           
@@ -60,9 +61,9 @@ function App() {
           <SearchBar />
           
           <div class="divider"></div>
-          <blockquote >
+          {/* <blockquote > */}
             {renderMovies()}
-          </blockquote>
+          {/* </blockquote> */}
           <div style={{marginBottom:'30px'}} class="divider"></div>
 
           <Routes>
