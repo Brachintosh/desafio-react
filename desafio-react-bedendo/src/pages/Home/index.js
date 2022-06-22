@@ -3,7 +3,6 @@ import '../../App.css';
 import useMovies from '../../hooks/useMovies';
 
 const Home = () => {
-
     const { movies } = useMovies();
     console.log('soy movies :>> ', movies);
 
@@ -15,6 +14,6 @@ const Home = () => {
         </div>
 
       );
-}
+};
 
-export default Home
+export default Home;
