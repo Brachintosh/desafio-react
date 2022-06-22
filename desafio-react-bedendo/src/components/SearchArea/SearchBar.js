@@ -1,14 +1,15 @@
 import React from 'react'
-import '../../App.css'
-const SearchBar = () => {
+
+const SearchBar = (props) => {
+
   return (
     <div className='App-SearchBar'>
         <div className='container'>
             <div className='row'>
-                <section className='col s5 offset-1' >
-                    <form action="">
+                <section className='col s5 offset-s4' >
+                    <form action="" onSubmit={props.handleSumbit}>
                         <div className='input-field'>
-                            <input type='text' placeholder='Buscar película...' />
+                            <input type='text' placeholder='Buscar película...' onChange={props.handleChange} />
                         </div>
                     </form>
                 </section>
