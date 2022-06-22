@@ -3,12 +3,13 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from './pages/Home';
 import { MoviesContextProvider } from './context/MoviesContext';
 import FooterBrand from './components/Footer/FooterBrand';
+import NavBar from './components/NavBar/NavBar';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
     <div>
-
+      <NavBar />
       <section>
         <MoviesContextProvider>
           <Routes>

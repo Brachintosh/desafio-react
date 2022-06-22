@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.css';
 import useMovies from '../../hooks/useMovies';
+import SearchBar from '../../components/SearchArea/SearchBar';
 
 const Home = () => {
     const { movies } = useMovies();
@@ -10,6 +11,7 @@ const Home = () => {
 
         <div className="App">
             <h1>Hola brachintosh!</h1>
+            <SearchBar />
             <img src="https://img.icons8.com/office/80/1A1A1A/starred-ticket.png" className="logo-ticket" alt="logo" />
         </div>
 
