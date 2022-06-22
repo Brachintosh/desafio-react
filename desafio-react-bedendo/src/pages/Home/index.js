@@ -10,8 +10,8 @@ const Home = () => {
     return (
 
         <div className="App">
-            <h1>Hola brachintosh!</h1>
             <SearchBar />
+            <h1>Hola brachintosh!</h1>
             <img src="https://img.icons8.com/office/80/1A1A1A/starred-ticket.png" className="logo-ticket" alt="logo" />
         </div>
 
