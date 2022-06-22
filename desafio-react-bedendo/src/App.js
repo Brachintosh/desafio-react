@@ -1,4 +1,4 @@
-import './index.css';
+import './App.css';
 // import { useContext } from "react";
 // import MoviesContext from "./context/MoviesContext";
 import { Routes, Route, Link } from "react-router-dom";
@@ -59,12 +59,11 @@ function App() {
           
           <NavBar />
           <SearchBar />
-          
-          <div class="divider"></div>
+          <div className="divider"></div>
           {/* <blockquote > */}
             {renderMovies()}
           {/* </blockquote> */}
-          <div style={{marginBottom:'30px'}} class="divider"></div>
+          <div style={{marginBottom:'30px'}} className="divider"></div>
 
           <Routes>
             <Route path="/" element={<Home />} />
