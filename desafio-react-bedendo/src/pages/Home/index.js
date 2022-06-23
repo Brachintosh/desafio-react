@@ -3,7 +3,7 @@ import '../../App.css';
 import useMovies from '../../hooks/useMovies';
 
 const Home = () => {
-    const { movies } = useMovies();// eslint-disable-line
+    // const { movies } = useMovies();// eslint-disable-line
     // console.log('soy useMovies :>> ', movies);
 
     return (

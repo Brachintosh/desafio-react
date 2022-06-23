@@ -19,6 +19,8 @@ function App() {
   const KEY = 'df5066801189b2180db818abe43bc557';
 
   const [popular_movies, setPopular_Movies] = useState([])// eslint-disable-line
+  const [selectedMovie, setSelectedMovie] = useState([])// eslint-disable-line
+
   const [searchKeyword, setSearchKeyword] = useState("")// eslint-disable-line
 
   const fetchMovies = async () => {
@@ -31,13 +33,36 @@ function App() {
         query: searchKeyword,
       }
     })
-    setPopular_Movies(data.results)
-    console.log('results :>> ', data.results);
+    setSelectedMovie(data.results[0]);
+    setPopular_Movies(data.results);
+    console.log('results :>> ', data.results[0]);
     
     } catch(err) {
         // Handle error
         console.log(err);
     }
+  }
+
+  const fetchSingleMovie = async (id) => {
+    try {
+      const {data} = await axios.get(`${API_URL}${id}`, {
+      params: {
+        api_key: KEY,
+        query: searchKeyword,
+      }
+    })
+    return data
+    // console.log('results :>> ', data);
+    
+    } catch(err) {
+        // Handle error
+        console.log(err);
+    }
+  }
+
+  const selectOneMovie = (id) => {
+    const selectedMovie = fetchSingleMovie(id);
+    setSelectedMovie(selectedMovie)
   }
 
   useEffect(() => {
@@ -68,10 +93,21 @@ function App() {
     <div>
       
       <section>
-        <MoviesContextProvider>
+        {/* <MoviesContextProvider> */}
           
           <NavBar />
           <SearchBar handleSearchMovies={handleSearchMovies} handleChangeSearch={handleChangeSearch} />
+          <div className="divider"></div>
+          
+          {/* TRAILER MOVIES */}
+          {console.log('SOY STATE selectedMovie :>> ', selectedMovie)}
+          <div className={'hero'}>
+            <div className='hero-content max-center'>
+              <button className='button-play'>Play Trailer</button>
+              <h1 className='hero-title'>{selectedMovie?.title}</h1>
+              {selectedMovie?.overview ? <p className='hero-overview' >{selectedMovie?.overview}</p> : null }
+            </div>
+          </div>
 
           {/* CARD GRID */}
           <div className="divider"></div>
@@ -103,7 +139,7 @@ function App() {
             />
 
           </Routes>
-        </MoviesContextProvider>
+        {/* </MoviesContextProvider> */}
 
       {/* // SCROLL TO TOP */}
       <ScrollToTop hidden showBelow={150}/>

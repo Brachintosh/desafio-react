@@ -9,8 +9,11 @@ const SearchBar = (props) => {
                 <section className='col s5 offset-s4' >
                     <form action="" onSubmit={props.handleSearchMovies}>
                         <div className='input-field'>
-                            <input type='text' placeholder='Buscar película...' onChange={props.handleChangeSearch} />
+                            <input type='text' placeholder='Ingresar nombre...' style={{color:'#DDDD'}} onChange={props.handleChangeSearch} />
                         </div>
+                        {/* <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button> */}
                     </form>
                 </section>
             </div>
