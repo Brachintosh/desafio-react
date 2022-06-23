@@ -65,6 +65,7 @@ function App() {
   }
 
   const selectOneMovie = async (movie) => {
+    setPlayTrailer(false);
     const selectedMovie = await fetchSingleMovie(movie.id);
     console.log('ESTO ES selectedMovie :>> ', selectedMovie);
     setSelectedMovie(selectedMovie)
