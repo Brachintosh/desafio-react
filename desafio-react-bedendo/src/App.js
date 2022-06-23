@@ -13,6 +13,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 import MovieCard from './components/MovieCard/MovieCard';
 import axios from  'axios';
+import YouTube from 'react-youtube';
 
 function App() {
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
@@ -76,6 +77,7 @@ function App() {
       <MovieCard
         key={movie.id}
         movie={movie}
+        selectMovie={setSelectedMovie}
       />
       )
     )
@@ -102,7 +104,13 @@ function App() {
           
           {/* TRAILER MOVIES */}
           <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}${selectedMovie?.backdrop_path}')` }} >
+            {console.log('SOY EL STATE movieSelected >> ', selectedMovie)}
             <div className='hero-content max-center'>
+
+              {/* <YouTube
+
+              /> */}
+
               <button className='button-play'>Play Trailer</button>
               <h1 className='hero-title'>{selectedMovie?.title}</h1>
               {selectedMovie?.overview ? <p className='hero-overview' >{selectedMovie?.overview}</p> : null }

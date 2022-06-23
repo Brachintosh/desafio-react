@@ -39,6 +39,7 @@ body {
 } */
 
 .hero {
+  padding: 0px 20px 50px 20px;
   min-height: 560px;
   background-position: top center;
   background-size: cover;
@@ -46,27 +47,29 @@ body {
   align-items: flex-end;
 }
 
-.hero-overview {
-  font-size: 18px;
-  color:rgba(231, 218, 201, 0.924);
-  text-shadow: 1px 3px 4px tomato;
-}
-
 .hero-title {
   font-size: 70px;
   margin:0;
-  color:rgba(238, 201, 155, 0.71);
-  text-shadow: 1px 3px 4px tomato;
+  color:rgba(234, 230, 225, 0.883);
+  text-shadow: 1px 3px 4px rgb(48, 32, 29);
+  padding: 20px 0px 20px 0px;
+}
+
+.hero-overview {
+  font-size: 18px;
+  color:rgba(247, 245, 242, 0.968);
+  text-shadow: 2px 5px 4px rgb(48, 32, 29);
 }
 
 .button-play {
   background-color: #0f1014a5;
-  color: aliceblue;
+  color:rgba(247, 245, 242, 0.968);
   outline: none;
   border: 1.3px solid white;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: 10px;
-  text-shadow: 1px 1.5px 2px tomato;
-  box-shadow: 1px 3px 4px tomato;
+  text-shadow: 1px 1.5px 12px rgb(227, 217, 215);
+  box-shadow: 1px 3px 4px rgba(255, 99, 71, 0.692);
   cursor: pointer;
+  margin-top: 1em;
 }
