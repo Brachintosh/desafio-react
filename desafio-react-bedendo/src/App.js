@@ -1,19 +1,12 @@
 import './App.css';
-// import { useContext } from "react";
-// import MoviesContext from "./context/MoviesContext";
-// import { MoviesContextProvider} from './context/MoviesContext';
-import { Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
-
-import Home from './pages/Home';
+import axios from  'axios';
 import NavBar from './components/NavBar/NavBar';
 import SearchBar from './components/SearchArea/SearchBar';
-import FooterBrand from './components/Footer/FooterBrand';
-import ScrollToTop from './components/ScrollToTop/ScrollToTop';
-
-import MovieCard from './components/MovieCard/MovieCard';
-import axios from  'axios';
 import YouTube from 'react-youtube';
+import MovieCard from './components/MovieCard/MovieCard';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import FooterBrand from './components/Footer/FooterBrand';
 
 function App() {
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
@@ -67,7 +60,7 @@ function App() {
   const selectOneMovie = async (movie) => {
     setPlayTrailer(false);
     const selectedMovie = await fetchSingleMovie(movie.id);
-    console.log('ESTO ES selectedMovie :>> ', selectedMovie);
+    // console.log('ESTO ES selectedMovie :>> ', selectedMovie);
     setSelectedMovie(selectedMovie)
   }
 
@@ -119,17 +112,14 @@ function App() {
 
   return (
     <div>
-      
       <section>
-        {/* <MoviesContextProvider> */}
-          
           <NavBar />
           <SearchBar handleSearchMovies={handleSearchMovies} handleChangeSearch={handleChangeSearch} />
           <div className="divider"></div>
-          
           {/* TRAILER MOVIES */}
-          <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}${selectedMovie?.backdrop_path}')` }} >
+          <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}${selectedMovie?.backdrop_path ? selectedMovie?.backdrop_path : selectedMovie?.poster_path}')` }} >
             <div className='hero-content max-center'>
+
               {/* CLOSE-YouTube-BTN */}
               {
                 playTrailer ? 
@@ -137,28 +127,35 @@ function App() {
                   :
                 null
               }
-              
+
+              {/* VIDEO-PLAYER-RENDER */}
               {
                 selectedMovie?.videos && playTrailer ? renderMovieTrailer() : null
               }
-
+              {/* PLAY-BTN */}
               <button className='button-play' onClick={() => setPlayTrailer(true)} >Play Trailer</button>
+              {/* INFO-CARD */}
               <h1 className='hero-title'>{selectedMovie?.title}</h1>
-              {selectedMovie?.release_date ? 
+              {
+                selectedMovie?.release_date ? 
                   <p className='hero-released' >
                     <i className='material-icons' style={{fontSize: '20px' }}>date_range</i>{" "}
                     Released: {selectedMovie?.release_date}.
                   </p>
-                     : null }
+                     : null
+              }
+
               {selectedMovie?.tagline ? <p className='hero-tagline' >{selectedMovie?.tagline}</p> : null }
               {selectedMovie?.overview ? <p className='hero-overview' >{selectedMovie?.overview}</p> : null }
-              {/* tagline */}
-              {selectedMovie?.vote_average ? 
+              
+              {
+                selectedMovie?.vote_average ? 
                   <p className='hero-vote' >
                     <i className='material-icons' style={{fontSize: '20px' }}>grade</i>{" "}
                     Average Vote: {selectedMovie?.vote_average}.
                   </p>
-                     : null }
+                     : null
+              }
             </div>
           </div>
 
@@ -168,32 +165,6 @@ function App() {
               {renderMovies()}
             </div>
           <div style={{marginBottom:'30px'}} className="divider"></div>
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="details" element={<Details />} /> */}
-            {/* <Route path="favourites" element={<Favourite />} /> */}
-            
-            {/* IF IT'S NOT FOUND  */}
-            <Route path="*" 
-              element={
-                <main style={{ padding: "1rem" }}>
-                  <p>There's nothing here!</p>
-                  <Link  style={{ 
-                    border:'solid #343434 1px', borderRadius:'8px', textDecoration:'none', fontSize: '2em',
-                    color: '#343434', display: "block", margin: "1rem 0", backgroundColor:'tomato',
-                    paddingLeft: '1.4rem', width:'12vw' 
-                    }} to={`/`}
-                  >
-                    Go Home
-                  </Link>
-              </main>
-              }
-            />
-
-          </Routes>
-        {/* </MoviesContextProvider> */}
-
       {/* // SCROLL TO TOP */}
       <ScrollToTop hidden showBelow={150}/>
       </section>

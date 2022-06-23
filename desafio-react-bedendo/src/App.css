@@ -66,14 +66,14 @@ body {
 .hero-tagline {
   margin:0;
   font-size: 32px;
-  color:rgba(247, 245, 242, 0.968);
+  color:rgba(239, 239, 239, 0.968);
   text-shadow: 2px 5px 4px rgb(48, 32, 29);
 }
 
 .hero-overview {
   margin:.5em 0 1em 0;
   font-size: 18px;
-  color:rgba(247, 245, 242, 0.968);
+  color:rgb(247, 245, 242);
   text-shadow: 2px 5px 4px rgb(48, 32, 29);
 }
 
