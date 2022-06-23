@@ -144,7 +144,21 @@ function App() {
 
               <button className='button-play' onClick={() => setPlayTrailer(true)} >Play Trailer</button>
               <h1 className='hero-title'>{selectedMovie?.title}</h1>
+              {selectedMovie?.release_date ? 
+                  <p className='hero-released' >
+                    <i className='material-icons' style={{fontSize: '20px' }}>date_range</i>{" "}
+                    Released: {selectedMovie?.release_date}.
+                  </p>
+                     : null }
+              {selectedMovie?.tagline ? <p className='hero-tagline' >{selectedMovie?.tagline}</p> : null }
               {selectedMovie?.overview ? <p className='hero-overview' >{selectedMovie?.overview}</p> : null }
+              {/* tagline */}
+              {selectedMovie?.vote_average ? 
+                  <p className='hero-vote' >
+                    <i className='material-icons' style={{fontSize: '20px' }}>grade</i>{" "}
+                    Average Vote: {selectedMovie?.vote_average}.
+                  </p>
+                     : null }
             </div>
           </div>
 

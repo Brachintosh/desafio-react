@@ -30,15 +30,18 @@ const MovieCard = ({movie, selectMovie}) => {
               <span class="card-title">No Image found!</span>
             </div>
           }<br/>
-          <div className="divider"></div><br/>
+          {/* <div className="divider"></div><br/> */}
           
-          <p className="card-text grey-text text-darken-2" >{movie.overview}</p><br/>
+          {/* <p className="card-text grey-text text-darken-2" >{movie.overview}</p><br/> */}
           
-          <h6 className="card-text grey-text text-darken-3" >
+          {/* <h6 className="card-text grey-text text-darken-3" >
           <i className='material-icons' style={{fontSize: '20px' }}>date_range</i>{" "}
                   Released: {movie.release_date}
-          </h6><br/>
+          </h6><br/> */}
+
+          {/* DIVIDER */}
           <div className="divider" style={{width:'20vw', marginLeft: '3.5em'}}></div><br/>
+          
           <h6 className="card-text grey-text text-darken-3" >
           <i className='material-icons' style={{fontSize: '20px' }}>grade</i>{" "}
                   Popularity: {movie.vote_average}
