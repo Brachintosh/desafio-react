@@ -26,10 +26,10 @@ function App() {
   const [searchKeyword, setSearchKeyword] = useState("")// eslint-disable-line
 
   const fetchMovies = async () => {
-    const requestType = searchKeyword ? "/search" : "/discover";
+    const requestType = searchKeyword ? "search" : "discover";
 
     try {
-      const {data} = await axios.get(`${API_URL}${requestType}/movie`, {
+      const {data} = await axios.get(`${API_URL}/${requestType}/movie`, {
       params: {
         api_key: KEY,
         query: searchKeyword,
@@ -37,7 +37,7 @@ function App() {
     })
     setSelectedMovie(data.results[0]);
     setPopular_Movies(data.results);
-    console.log('results :>> ', data.results[0]);
+    // console.log('results :>> ', data.results[0]);
     
     } catch(err) {
         // Handle error
@@ -47,10 +47,10 @@ function App() {
 
   const fetchSingleMovie = async (id) => {
     try {
-      const {data} = await axios.get(`${API_URL}${id}`, {
+      const {data} = await axios.get(`${API_URL}/movie/${id}`, {
       params: {
         api_key: KEY,
-        query: searchKeyword,
+        append_to_response: 'videos',
       }
     })
     return data
@@ -62,8 +62,9 @@ function App() {
     }
   }
 
-  const selectOneMovie = (id) => {
-    const selectedMovie = fetchSingleMovie(id);
+  const selectOneMovie = async (movie) => {
+    const selectedMovie = await fetchSingleMovie(movie.id);
+    console.log('ESTO ES selectedMovie :>> ', selectedMovie);
     setSelectedMovie(selectedMovie)
   }
 
@@ -77,7 +78,7 @@ function App() {
       <MovieCard
         key={movie.id}
         movie={movie}
-        selectMovie={setSelectedMovie}
+        selectMovie={selectOneMovie}
       />
       )
     )
@@ -88,9 +89,21 @@ function App() {
     fetchMovies(searchKeyword);
 
   }
-   const handleChangeSearch = (e) => {
+
+  const handleChangeSearch = (e) => {
       setSearchKeyword(e.target.value)
    }
+
+  const renderMovieTrailer = () => {
+    const movieTrailer = selectedMovie?.videos.results.find(vid => vid.name === 'Official Trailer');
+
+    return (
+      <YouTube 
+        videoId={movieTrailer.key}
+        
+      />
+    )
+  }
 
   return (
     <div>
@@ -104,12 +117,11 @@ function App() {
           
           {/* TRAILER MOVIES */}
           <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}${selectedMovie?.backdrop_path}')` }} >
-            {console.log('SOY EL STATE movieSelected >> ', selectedMovie)}
             <div className='hero-content max-center'>
 
-              {/* <YouTube
-
-              /> */}
+              {
+                selectedMovie?.videos ? renderMovieTrailer() : null
+              }
 
               <button className='button-play'>Play Trailer</button>
               <h1 className='hero-title'>{selectedMovie?.title}</h1>
