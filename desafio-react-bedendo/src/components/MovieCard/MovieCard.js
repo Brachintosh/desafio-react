@@ -4,7 +4,7 @@ const MovieCard = ({movie}) => {
   const IMG_PATH = 'https://image.tmdb.org/t/p/w500';
   // console.log('ESTE ES movie :>> ', movie);
   return (
-    <div className="card col s10">
+    <div className="card darken-1 col s10">
       <div className="card-content">
         <div className={'movie-card'}>
           <h5 className={'movie-title'}>
@@ -12,9 +12,13 @@ const MovieCard = ({movie}) => {
           </h5>
           <div className="divider"></div><br/>
           {
-            movie?.poster_path ? <img className={'movie-cover'} src={`${IMG_PATH}${movie.poster_path}`} alt='movie-cover' />
+            movie?.poster_path ?
+            <div class="card-image">
+              <img className={'movie-cover'} src={`${IMG_PATH}${movie.poster_path}`} alt='movie-cover' />
+              {/* <span class="card-title">{movie.title}</span> */}
+            </div>
             : null
-          }<br/><br/>
+          }<br/>
           <div className="divider"></div><br/>
           <p className="card-text grey-text text-darken-2" >{movie.overview}</p><br/>
           <h6 className="card-text grey-text text-darken-3" >

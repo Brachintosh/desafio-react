@@ -61,7 +61,7 @@ function App() {
           <SearchBar />
           <div className="divider"></div>
           {/* <blockquote > */}
-          <div className='container-app'>
+          <div className='container-cards'>
             {renderMovies()}
           </div>
           {/* </blockquote> */}

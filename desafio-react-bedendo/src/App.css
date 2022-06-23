@@ -1,10 +1,10 @@
-.container-app {
-  width: 85vw;
+.container-cards {
+  width: 90vw;
   margin-left: auto;
   margin-right: auto;
-  
+  padding: 1em 0em 1em 0em;
   display: grid;
-  gap: .3em 1em;
+  gap: .01rem .5em;
   grid-template-columns: 1fr 1fr;
 }
 
