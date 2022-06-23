@@ -94,16 +94,20 @@ function App() {
 
   const renderMovieTrailer = () => {
     const movieTrailer = selectedMovie?.videos.results.find(vid => vid.name === 'Official Trailer');
+    const trailer_Key = movieTrailer ? movieTrailer.key : selectedMovie?.videos.results[0].key;
 
     return (
       <YouTube 
         style={{marginTop:'1em'}}
-        videoId={movieTrailer.key}
+        videoId={trailer_Key}
         containerClassName={'youtube-container'}
         opts={{
           width: '100%',
           height: '480px',
-
+          playerVars: {
+            autoplay: 1,
+            controls: 0,
+          }
         }}
       />
     )
