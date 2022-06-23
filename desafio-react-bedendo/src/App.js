@@ -15,6 +15,7 @@ import MovieCard from './components/MovieCard/MovieCard';
 import axios from  'axios';
 
 function App() {
+  const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
   const API_URL =  "https://api.themoviedb.org/3";
   const KEY = 'df5066801189b2180db818abe43bc557';
 
@@ -100,8 +101,7 @@ function App() {
           <div className="divider"></div>
           
           {/* TRAILER MOVIES */}
-          {console.log('SOY STATE selectedMovie :>> ', selectedMovie)}
-          <div className={'hero'}>
+          <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}${selectedMovie?.backdrop_path}')` }} >
             <div className='hero-content max-center'>
               <button className='button-play'>Play Trailer</button>
               <h1 className='hero-title'>{selectedMovie?.title}</h1>

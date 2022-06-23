@@ -2,11 +2,24 @@ body {
   background-color: #343434;
 }
 
+.header-content {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.max-center {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .container-cards {
   width: 90vw;
   margin-left: auto;
   margin-right: auto;
   padding: 1em 0em 1em 0em;
+
   display: grid;
   gap: .01rem .5em;
   grid-template-columns: 1fr 1fr;
@@ -14,10 +27,27 @@ body {
 
 .movie-cover {
   width: 100%;
-  height: fit-content;
 }
 
-h1{
+/* .movie-placeholder {
+  min-height: 359px;
+  background-color: aliceblue;
+  color: #343434;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.hero {
+  min-height: 560px;
+}
+
+.hero-overview {
+  color:rgba(238, 201, 155, 0.71);
+  text-shadow: 1px 3px 4px tomato;
+}
+
+h1 {
   color:rgba(238, 201, 155, 0.71);
   text-shadow: 1px 3px 4px tomato;
 }

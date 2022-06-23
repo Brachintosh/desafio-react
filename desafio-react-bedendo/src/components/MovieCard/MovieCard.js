@@ -44,27 +44,3 @@ const MovieCard = ({movie}) => {
   
 }
 export default MovieCard;
-
-// return (
-//   <div className="row">
-//     <div className="col s12 m12 ">
-//       <div className="card col s10">
-//         <div className="card-content">
-//           <span className="card-title grey-text text-darken-4 " >
-//             <i className='material-icons'>keyboard_arrow_right</i>{" "}
-//             {movie.title}</span><div className="divider"></div><br/>
-//           {
-//             movie.poster_path ? <img className={'movie-cover'} src={`${IMG_PATH}${movie.poster_path}`} alt="movie-font" />
-//             : null
-//           }
-//           <br/><br/>
-//           <span className="card-text grey-text text-darken-2" >{movie.overview}</span>
-//           <p className="flow-text grey-text text-darken-3" style={{paddingTop:'20px'}} >
-//             <i className='material-icons'>grade</i>{" "}
-//               Popularity: {movie.vote_average}</p>
-
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// )
