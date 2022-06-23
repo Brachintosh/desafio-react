@@ -1,9 +1,9 @@
 import './App.css';
 // import { useContext } from "react";
 // import MoviesContext from "./context/MoviesContext";
+// import { MoviesContextProvider} from './context/MoviesContext';
 import { Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { MoviesContextProvider} from './context/MoviesContext';
 
 import Home from './pages/Home';
 import NavBar from './components/NavBar/NavBar';
@@ -20,10 +20,11 @@ function App() {
   const API_URL =  "https://api.themoviedb.org/3";
   const KEY = 'df5066801189b2180db818abe43bc557';
 
-  const [popular_movies, setPopular_Movies] = useState([])// eslint-disable-line
-  const [selectedMovie, setSelectedMovie] = useState([])// eslint-disable-line
+  const [popular_movies, setPopular_Movies] = useState([])
+  const [selectedMovie, setSelectedMovie] = useState([])
 
-  const [searchKeyword, setSearchKeyword] = useState("")// eslint-disable-line
+  const [searchKeyword, setSearchKeyword] = useState("")
+  const [playTrailer, setPlayTrailer] = useState(false);
 
   const fetchMovies = async () => {
     const requestType = searchKeyword ? "search" : "discover";
@@ -35,7 +36,8 @@ function App() {
         query: searchKeyword,
       }
     })
-    setSelectedMovie(data.results[0]);
+
+    await selectOneMovie(data.results[0]);
     setPopular_Movies(data.results);
     // console.log('results :>> ', data.results[0]);
     
@@ -68,11 +70,6 @@ function App() {
     setSelectedMovie(selectedMovie)
   }
 
-  useEffect(() => {
-    fetchMovies()
-    // console.log('popular_movies :>> ', popular_movies);
-  },[]);
-
   const renderMovies = () => (
     popular_movies?.map(movie => (
       <MovieCard
@@ -99,11 +96,21 @@ function App() {
 
     return (
       <YouTube 
+        style={{marginTop:'1em'}}
         videoId={movieTrailer.key}
-        
+        containerClassName={'youtube-container'}
+        opts={{
+          width: '100%',
+          height: '480px',
+
+        }}
       />
     )
   }
+
+  useEffect(function() {
+    fetchMovies()
+  },[]);
 
   return (
     <div>
@@ -118,12 +125,13 @@ function App() {
           {/* TRAILER MOVIES */}
           <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}${selectedMovie?.backdrop_path}')` }} >
             <div className='hero-content max-center'>
-
+              {/* CLOSE-YouTube-BTN */}
+              <button className={'button-play'} onClick={() => setPlayTrailer(false)} >Close</button>
               {
-                selectedMovie?.videos ? renderMovieTrailer() : null
+                selectedMovie?.videos && playTrailer ? renderMovieTrailer() : null
               }
 
-              <button className='button-play'>Play Trailer</button>
+              <button className='button-play' onClick={() => setPlayTrailer(true)} >Play Trailer</button>
               <h1 className='hero-title'>{selectedMovie?.title}</h1>
               {selectedMovie?.overview ? <p className='hero-overview' >{selectedMovie?.overview}</p> : null }
             </div>

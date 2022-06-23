@@ -5,7 +5,7 @@ const MovieCard = ({movie, selectMovie}) => {
   const IMG_NOT_FOUND = "https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
   // console.log('ESTE ES movie :>> ', movie);
   return (
-    <div className="card darken-1 col s10" onClick={() => selectMovie(movie)} >
+    <div className="card darken-1 col s10" onClick={() => selectMovie(movie)} style={{backgroundColor:'#EEEEEE'}}>
       <div className="card-content">
         <div className={'movie-card'}>
           <h5 className={'movie-title'}>
