@@ -126,7 +126,13 @@ function App() {
           <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}${selectedMovie?.backdrop_path}')` }} >
             <div className='hero-content max-center'>
               {/* CLOSE-YouTube-BTN */}
-              <button className={'button-play'} onClick={() => setPlayTrailer(false)} >Close</button>
+              {
+                playTrailer ? 
+                <button className={'button-play button--close'} onClick={() => setPlayTrailer(false)} >Close</button>
+                  :
+                null
+              }
+              
               {
                 selectedMovie?.videos && playTrailer ? renderMovieTrailer() : null
               }

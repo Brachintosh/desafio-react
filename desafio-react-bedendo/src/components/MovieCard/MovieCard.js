@@ -12,7 +12,7 @@ const MovieCard = ({movie, selectMovie}) => {
   }
 
   return (
-    <div className="card darken-1 col s10" onClick={handleClick_Selected} style={{backgroundColor:'#EEEEEE'}}>
+    <div className="card darken-1 col s10" onClick={handleClick_Selected} style={{backgroundColor:'#EEEEEE', cursor: 'pointer'}}>
       <div className="card-content">
         <div className={'movie-card'}>
           <h5 className={'movie-title'}>
