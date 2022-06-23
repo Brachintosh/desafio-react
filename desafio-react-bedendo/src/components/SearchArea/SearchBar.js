@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const SearchBar = (props) => {
 
@@ -7,9 +7,9 @@ const SearchBar = (props) => {
         <div className='container'>
             <div className='row'>
                 <section className='col s5 offset-s4' >
-                    <form action="" onSubmit={props.handleSumbit}>
+                    <form action="" onSubmit={props.handleSearchMovies}>
                         <div className='input-field'>
-                            <input type='text' placeholder='Buscar película...' onChange={props.handleChange} />
+                            <input type='text' placeholder='Buscar película...' onChange={props.handleChangeSearch} />
                         </div>
                     </form>
                 </section>

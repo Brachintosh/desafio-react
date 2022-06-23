@@ -19,12 +19,16 @@ function App() {
   const KEY = 'df5066801189b2180db818abe43bc557';
 
   const [popular_movies, setPopular_Movies] = useState([])// eslint-disable-line
+  const [searchKeyword, setSearchKeyword] = useState("")// eslint-disable-line
 
-  const fetchPopular_Movies = async () => {
+  const fetchMovies = async () => {
+    const requestType = searchKeyword ? "/search" : "/discover";
+
     try {
-      const {data} = await axios.get(`${API_URL}/discover/movie`, {
+      const {data} = await axios.get(`${API_URL}${requestType}/movie`, {
       params: {
         api_key: KEY,
+        query: searchKeyword,
       }
     })
     setPopular_Movies(data.results)
@@ -37,7 +41,7 @@ function App() {
   }
 
   useEffect(() => {
-   fetchPopular_Movies()
+    fetchMovies()
     // console.log('popular_movies :>> ', popular_movies);
   },[]);
 
@@ -47,9 +51,18 @@ function App() {
         key={movie.id}
         movie={movie}
       />
-      
-    ))
-  )
+      )
+    )
+  );
+
+  const handleSearchMovies = (e) => {
+    e.preventDefault();
+    fetchMovies(searchKeyword);
+
+  }
+   const handleChangeSearch = (e) => {
+      setSearchKeyword(e.target.value)
+   }
 
   return (
     <div>
@@ -58,13 +71,13 @@ function App() {
         <MoviesContextProvider>
           
           <NavBar />
-          <SearchBar />
+          <SearchBar handleSearchMovies={handleSearchMovies} handleChangeSearch={handleChangeSearch} />
+
+          {/* CARD GRID */}
           <div className="divider"></div>
-          {/* <blockquote > */}
-          <div className='container-cards'>
-            {renderMovies()}
-          </div>
-          {/* </blockquote> */}
+            <div className='container-cards'>
+              {renderMovies()}
+            </div>
           <div style={{marginBottom:'30px'}} className="divider"></div>
 
           <Routes>
