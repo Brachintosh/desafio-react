@@ -1,3 +1,18 @@
+.container-app {
+  width: 85vw;
+  margin-left: auto;
+  margin-right: auto;
+  
+  display: grid;
+  gap: .3em 1em;
+  grid-template-columns: 1fr 1fr;
+}
+
+.movie-cover {
+  width: 100%;
+  height: fit-content;
+}
+
 /* .App {
   background-color: #343434;
   min-height: 100vh;
