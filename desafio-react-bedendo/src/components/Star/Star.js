@@ -7,11 +7,10 @@ const Star = ({ movie, renderMovies, setPopular_Movies }) => {
     // const [filteredMovies, setFilteredMovie] = useState([]);
 
     function filterByRating(stars){
+      // ! No anda del todo, se pisa el array de info original, ergo anda el 1er click, si no hay array de popular_movies, no puede filtrar de nuevo... abajo está la prueba para lograr que ande, pero aun falla...
       setPopular_Movies(movie.filter(a => Math.round(a.vote_average /2) === stars))
-    setMovieRating(stars);
-
-
-  }
+      setMovieRating(stars);
+    }
 
   useEffect(()=> {
     renderMovies();
@@ -49,3 +48,20 @@ const Star = ({ movie, renderMovies, setPopular_Movies }) => {
 
 export default Star;
 
+// function filterByRating(stars){
+//   // tener dos estados locales, ambos con las 20 pelis.
+//   // cuando hago el 1er click, filtrar de un estado el .vote_average && counter +1
+//   // en los proximos clicks, if(0 =! 1) 1= 2do click >> para resetear
+//   if(counter % 0){
+//     setBackUp(result)
+//   }
+//     setResult(result?.filter(a => Math.round(a.vote_average /2) === stars))
+
+
+//   if(counter != 0){
+//     setResult(backUp)
+//   }
+//   setPopular_Movies(setBackUp(backUp?.filter(a => Math.round(a.vote_average /2) === stars)))
+
+//   setMovieRating(stars);
+// }

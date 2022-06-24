@@ -10,6 +10,7 @@ import FooterBrand from './components/Footer/FooterBrand';
 import Star from './components/Star/Star';
 
 function App() {
+  const IMG_NOT_FOUND = "https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
   const API_URL =  "https://api.themoviedb.org/3";
   const KEY = 'df5066801189b2180db818abe43bc557';
@@ -66,17 +67,19 @@ function App() {
     setSelectedMovie(selectedMovie)
   }
 
-  const renderMovies = () => (
-    // let renderCard = filteredMovies > 1 ? filteredMovies : popular_movies
-    popular_movies?.map(movie => (
+  const renderMovies = () => {
+    let renderCard = filteredMovies > 1 ? filteredMovies : popular_movies
+    return (
+      renderCard?.map(movie => (
         <MovieCard
           key={movie.id}
           movie={movie}
           selectMovie={selectOneMovie}
         />
         )
+      )
     ) 
-  )
+  }
   
 
   const handleSearchMovies = (e) => {
@@ -120,11 +123,11 @@ function App() {
           <NavBar setPopular_Movies={setPopular_Movies} popular_movies={popular_movies} />
           <SearchBar handleSearchMovies={handleSearchMovies} handleChangeSearch={handleChangeSearch} />
           
-          <Star renderMovies={renderMovies} movie={ popular_movies } setPopular_Movies={setPopular_Movies} />
+          <Star renderMovies={renderMovies} movie={ popular_movies } setPopular_Movies={setPopular_Movies} fetchMovies={fetchMovies}/>
           
           <div className="divider"></div>
           {/* TRAILER MOVIES */}
-          <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}/${selectedMovie.backdrop_path ? selectedMovie.backdrop_path : selectedMovie?.poster_path}')` }} >
+          <div className={'hero'}  style={{backgroundImage:`url('${IMG_PATH}/${selectedMovie.backdrop_path ? selectedMovie.backdrop_path : `url('${IMG_NOT_FOUND}')` }')` }} >
             <div className='hero-content max-center'>
 
               {/* CLOSE-YouTube-BTN */}
@@ -169,7 +172,7 @@ function App() {
           {/* CARD GRID */}
           <div className="divider"></div>
             <div className='container-cards'>
-              {renderMovies(filteredMovies)}
+              {renderMovies()}
             </div>
           <div style={{marginBottom:'30px'}} className="divider"></div>
       {

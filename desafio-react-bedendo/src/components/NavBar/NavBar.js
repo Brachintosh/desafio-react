@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const NavBar = ({ popular_movies, setPopular_Movies}) => {
   console.log('popular_movies :>> ', popular_movies);
