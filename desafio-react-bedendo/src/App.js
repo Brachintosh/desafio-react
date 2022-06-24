@@ -7,7 +7,7 @@ import YouTube from 'react-youtube';
 import MovieCard from './components/MovieCard/MovieCard';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import FooterBrand from './components/Footer/FooterBrand';
-// import Star from './components/Star/Star';
+import Star from './components/Star/Star';
 
 function App() {
   const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
@@ -67,15 +67,17 @@ function App() {
   }
 
   const renderMovies = () => (
+    // let renderCard = filteredMovies > 1 ? filteredMovies : popular_movies
     popular_movies?.map(movie => (
-      <MovieCard
-        key={movie.id}
-        movie={movie}
-        selectMovie={selectOneMovie}
-      />
-      )
-    )
-  );
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          selectMovie={selectOneMovie}
+        />
+        )
+    ) 
+  )
+  
 
   const handleSearchMovies = (e) => {
     e.preventDefault();
@@ -108,15 +110,6 @@ function App() {
     )
   }
 
-  // const handleSort_Average_Vote = () => {
-    //! Sorted by VOTE:
-  //   let average_Votes = filteredMovies?.map( a => a.vote_average).sort().reverse() 
-    //! Sorted by TITLE-NAME:
-  //   let average_Votes = filteredMovies?filteredMovies?.map( a => a.title).sort().reverse() 
-  //   console.log('average_Votes :>> ', average_Votes);
-  //   return average_Votes;
-  // }
-
   useEffect(function() {
     fetchMovies()
   },[]);
@@ -124,10 +117,10 @@ function App() {
   return (
     <div>
       <section>
-          <NavBar />
+          <NavBar setPopular_Movies={setPopular_Movies} popular_movies={popular_movies} />
           <SearchBar handleSearchMovies={handleSearchMovies} handleChangeSearch={handleChangeSearch} />
           
-          {/* <Star movie={ popular_movies }/> */}
+          <Star renderMovies={renderMovies} movie={ popular_movies } setPopular_Movies={setPopular_Movies} />
           
           <div className="divider"></div>
           {/* TRAILER MOVIES */}
@@ -176,11 +169,11 @@ function App() {
           {/* CARD GRID */}
           <div className="divider"></div>
             <div className='container-cards'>
-              {renderMovies()}
+              {renderMovies(filteredMovies)}
             </div>
           <div style={{marginBottom:'30px'}} className="divider"></div>
       {
-        console.log('filteredMoviess :>> ', filteredMovies?.map( a => a.title).sort().reverse() )
+        // console.log('filteredMoviess :>> ', filteredMovies?.map( a => a.title).sort().reverse() )
       }
       {/* // SCROLL TO TOP */}
       <ScrollToTop hidden showBelow={150}/>

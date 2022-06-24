@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const Star = ({ movie }) => {
-    const [movieRating, setMovieRating] = useState(null);
+const Star = ({ movie, renderMovies, setPopular_Movies }) => {
     const [hover, setHover] = useState(null);
-    const [movieStars, setMovieStars] = useState();
+    const [movieRating, setMovieRating] = useState(0)
+    // const [filteredMovies, setFilteredMovie] = useState([]);
 
-    useEffect(() => {
-        setMovieStars(movie?.map(r => r.vote_average/2))
+    function filterByRating(stars){
+      setPopular_Movies(movie.filter(a => Math.round(a.vote_average /2) === stars))
+    setMovieRating(stars);
 
-        
-    },[movie])
 
-    console.log('SOY movie EN STAR COMP :>> ', movie?.map(r => r.vote_average));
+  }
+
+  useEffect(()=> {
+    renderMovies();
+  },[]);
+
   return (
     <div>
       {[ ...Array(5)].map( (s, i) => {
@@ -24,7 +28,7 @@ const Star = ({ movie }) => {
                         type="radio"
                         name="rating"
                         value={ratingValue}
-                        onClick={() => setMovieRating(ratingValue) }
+                        onClick={() => filterByRating(ratingValue)}
                     />
                     
                     <FaStar 
@@ -38,8 +42,7 @@ const Star = ({ movie }) => {
                 </label>
             )
       })}
-      <p>The rating is: {movieRating}</p>
-      <p>The rating is: {movieStars}</p>
+      <p  style={{color:'aliceblue'}}>The rating is: {movieRating}</p>
     </div>
   )
 }
