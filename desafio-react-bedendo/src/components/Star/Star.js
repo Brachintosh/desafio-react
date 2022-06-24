@@ -7,6 +7,9 @@ const Star = ({ movie, renderMovies, setPopular_Movies }) => {
     // const [filteredMovies, setFilteredMovie] = useState([]);
 
     function filterByRating(stars){
+      // if(e.target.value === movieRating){
+      //   setMovieRating(!stars);  
+      // }
       // ! No anda del todo, se pisa el array de info original, ergo anda el 1er click, si no hay array de popular_movies, no puede filtrar de nuevo... abajo está la prueba para lograr que ande, pero aun falla...
       setPopular_Movies(movie.filter(a => Math.round(a.vote_average /2) === stars))
       setMovieRating(stars);
@@ -17,12 +20,15 @@ const Star = ({ movie, renderMovies, setPopular_Movies }) => {
   },[]);
 
   return (
-    <div>
+    <div style={{marginLeft:'3em'}}>
+      <div>
+        <p style={{color:'#eee', fontSize:'16px', marginBottom:'.5em'}}><u>Select:</u></p>
       {[ ...Array(5)].map( (s, i) => {
         const ratingValue = i + 1;
 
             return (
-                <label key={ratingValue}>
+              <label key={ratingValue}>
+                  
                     <input
                         type="radio"
                         name="rating"
@@ -41,8 +47,9 @@ const Star = ({ movie, renderMovies, setPopular_Movies }) => {
                 </label>
             )
       })}
-      <p  style={{color:'aliceblue'}}>The rating is: {movieRating}</p>
+      <p  style={{color:'#eee'}}>The rating is: {movieRating}</p>
     </div>
+  </div>
   )
 }
 

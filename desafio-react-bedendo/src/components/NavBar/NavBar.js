@@ -51,10 +51,10 @@ const NavBar = ({ popular_movies, setPopular_Movies}) => {
         <div className='nav-wrapper container'>
           
             <img style={{height:'50px', width:'50px', marginRight:'.5rem'}} src="https://img.icons8.com/office/80/1A1A1A/starred-ticket.png" className="logo-ticket" alt="logo" />
-            <a href="/" className='brand-logo' >Veo-Veo</a>
+            <a href="/" className='brand-logo' style={{cursor:'pointer'}}>Veo-Veo</a>
             {/* <img style={{height:'60px', width:'60px', marginLeft:'8.5rem', transform: 'rotate(90deg)'}} src="https://img.icons8.com/office/80/1A1A1A/starred-ticket.png" className="logo-ticket" alt="logo" /> */}
 
-            <div>
+            {/* <div>
             <p><u>Filter from:</u></p>
             <select 
                 onChange={onInputChange} 
@@ -67,7 +67,7 @@ const NavBar = ({ popular_movies, setPopular_Movies}) => {
                 ))}
 
             </select>
-        </div>
+            </div> */}
 
         </div>
     </nav>
