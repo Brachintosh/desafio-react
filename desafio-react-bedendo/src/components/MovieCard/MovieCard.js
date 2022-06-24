@@ -38,7 +38,7 @@ const MovieCard = ({movie, selectMovie}) => {
           <br/>
           <h6 className="card-text grey-text text-darken-3" >
           <i className='material-icons' style={{fontSize: '20px' }}>grade</i>{" "}
-                  Popularity: {movie.vote_average}
+                  Popularity: {movie.vote_average/2}
           </h6>
           {/* <Star movie={movie} /> */}
         </div>
