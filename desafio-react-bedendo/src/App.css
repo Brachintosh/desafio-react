@@ -111,3 +111,12 @@ body {
   bottom: 0;
   left: 0;
 }
+
+input[type='radio'] {
+  display: none;
+}
+
+.star-rating {
+  cursor: pointer;
+  transition: color 200ms;
+}

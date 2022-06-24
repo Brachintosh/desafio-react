@@ -1,10 +1,12 @@
 import React from 'react';
+// import Star from '../Star/Star';
 
 const MovieCard = ({movie, selectMovie}) => {
+  // console.log('ESTE ES movie :>> ', movie);
   const IMG_PATH = 'https://image.tmdb.org/t/p/original';
   const IMG_NOT_FOUND = "https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80"
-  console.log('ESTE ES movie :>> ', movie);
-
+  
+  
   const handleClick_Selected = () => {
     selectMovie(movie)
     // When user clicks any card it will return to the 'hero-display'
@@ -25,7 +27,7 @@ const MovieCard = ({movie, selectMovie}) => {
               <img className={'movie-cover'} src={`${IMG_PATH}${movie.poster_path}`} alt='movie-cover' />
             </div>
             : 
-            <div class="card-image">
+            <div className="card-image">
               <img className={'movie-cover'} src={`${IMG_NOT_FOUND}`} alt='movie-cover' />
               <span className="card-title">No Image found!</span>
             </div>
@@ -38,6 +40,7 @@ const MovieCard = ({movie, selectMovie}) => {
           <i className='material-icons' style={{fontSize: '20px' }}>grade</i>{" "}
                   Popularity: {movie.vote_average}
           </h6>
+          {/* <Star movie={movie} /> */}
         </div>
       </div>
     </div>
