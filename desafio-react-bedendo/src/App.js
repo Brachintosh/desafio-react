@@ -162,7 +162,7 @@ function App() {
                 selectedMovie?.vote_average ? 
                   <p className='hero-vote' >
                     <i className='material-icons' style={{fontSize: '20px' }}>grade</i>{" "}
-                    Average Vote: {selectedMovie?.vote_average}
+                    Average Vote: {selectedMovie?.vote_average/2}
                   </p>
                      : null
               }
